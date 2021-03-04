@@ -8,6 +8,6 @@ namespace PhotoStudio
 {
     class EF
     {
-        public static Entities context = new Entities();
+        public static Entities Context { get; } = new Entities();
     }
 }

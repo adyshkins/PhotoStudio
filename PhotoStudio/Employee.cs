@@ -20,5 +20,6 @@ namespace PhotoStudio
         public string MiddleName { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public byte[] Photo { get; set; }
     }
 }

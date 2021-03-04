@@ -18,32 +18,29 @@ namespace PhotoStudio
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthWind : Window
     {
-        public MainWindow()
+        public AuthWind()
         {
             InitializeComponent();
         }
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
+            var user1 = EF.Context.Employee.ToList().
+                Where(i => i.Login == txtLogin.Text && i.Password == txtPassword.Password)
+                .FirstOrDefault();
 
-            var user1 = EF.context.Employee.
-            Where(i => i.Login == txtLogin.Text && i.Password == txtPassword.Password).ToList();
-
-            if (user1.Count != 0)
+            if (user1 != null)
             {
                 ServiceWindow serviceWin = new ServiceWindow();
-                this.Hide();
-                serviceWin.ShowDialog();
-                this.Show();
+                serviceWin.Show();
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Пользователь не найден");
             }
-
-            
             
         }
     }
